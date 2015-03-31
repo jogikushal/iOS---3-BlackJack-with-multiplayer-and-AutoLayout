@@ -186,6 +186,9 @@
                                                         <include reference="aV5-nu-hAX"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="fiveButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6OU-cf-5wa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puq-1Y-5Qs">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -208,6 +211,9 @@
                                                         <include reference="xiD-2q-cRN"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="oneButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nGI-Hw-Ent"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7s-rt-u4R">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -215,6 +221,9 @@
                                                 <state key="normal" title="DEAL">
                                                     <color key="titleColor" red="1" green="1" blue="0.20047800160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="dealButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6OU-cE-VDj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRH-Y3-msJ">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -223,6 +232,9 @@
                                                     <color key="titleColor" red="1" green="1" blue="0.20047800160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="standButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1FT-IP-lJg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aA7-kP-HOe">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -231,6 +243,9 @@
                                                     <color key="titleColor" red="1" green="1" blue="0.20047800160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="hitButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RQH-BH-aox"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLAYER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDm-gl-ldJ">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -255,9 +270,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="90" y="96" width="10" height="20.5"/>
-                                                </variation>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -455,10 +467,24 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="aCard" destination="xFh-62-Hzf" id="MKZ-16-WVp"/>
+                        <outlet property="betAmount" destination="7vT-O5-hQk" id="i3y-WY-xkB"/>
+                        <outlet property="dealButton" destination="G7s-rt-u4R" id="YnN-Wi-YJZ"/>
+                        <outlet property="dealerCard" destination="jCo-ph-Nx8" id="sqO-ao-PjR"/>
+                        <outlet property="dealerHandView" destination="IN9-bg-ynh" id="Jlc-Lm-2Bl"/>
+                        <outlet property="fiveButton" destination="01g-hU-Xbw" id="zL6-Lz-Q2F"/>
+                        <outlet property="hitButton" destination="aA7-kP-HOe" id="Qzg-vB-nBo"/>
+                        <outlet property="oneButton" destination="Puq-1Y-5Qs" id="Wde-58-2p6"/>
+                        <outlet property="pCard" destination="qCP-iG-Olq" id="Jqd-bq-cKr"/>
+                        <outlet property="playerMoney" destination="JHb-Df-goF" id="Et5-9P-FKW"/>
+                        <outlet property="playerView" destination="9ua-95-fsB" id="auM-s9-ht6"/>
+                        <outlet property="standButton" destination="QRH-Y3-msJ" id="yYa-D5-pg9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.5" y="-108"/>
+            <point key="canvasLocation" x="165" y="-98"/>
         </scene>
     </scenes>
     <resources>
