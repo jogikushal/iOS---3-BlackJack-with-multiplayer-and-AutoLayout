@@ -78,6 +78,7 @@ class ViewController: UIViewController {
     
     @IBAction func dealButtonPressed(sender: AnyObject) {
         print("deal pressed")
+        hitButton.enabled = true
     }
     
     @IBAction func standButtonPressed(sender: AnyObject) {
@@ -89,7 +90,31 @@ class ViewController: UIViewController {
         print("hit pressed")
         var a = shoe.removeLast()
         players[playingPlayer].hands.cards.append(a)
+        showCards(playerView, currentView: pCard)
     }
+    
+    
+    
+    func showCards(parentView : UIView, currentView :UIView){
+        var xoffSet : CGFloat = 0
+        var yoffSet : CGFloat = 0
+        var currentStart = currentView.frame.size
+        xoffSet = CGFloat(15)
+    //    yoffSet = CGFloat(25)
+        var j = 0
+        var width1 = currentStart.width
+        var height1 = currentStart.height
+        var x = currentView.frame.origin.x
+        var y = currentView.frame.origin.y
+        
+        let helper = ViewControllerHelper()
+        //if(addAllCards){
+        for i in players[playingPlayer].hands.cards{
+        
+                let newCardView : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(i.rank.values.r)\(i.suite.rawValue)")
+                parentView.addSubview(newCardView)
+            }
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
