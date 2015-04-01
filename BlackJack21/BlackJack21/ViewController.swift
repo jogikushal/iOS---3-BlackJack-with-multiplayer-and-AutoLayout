@@ -80,6 +80,7 @@ class ViewController: UIViewController {
     @IBAction func dealButtonPressed(sender: AnyObject) {
         print("deal pressed")
         hitButton.enabled = true
+        standButton.enabled = true
         for j in 1...2{
             var a = shoe.removeLast()
             players[playingPlayer].hands.cards.append(a)
@@ -87,7 +88,7 @@ class ViewController: UIViewController {
         }
         showCards(playerView, currentView: pCard, isPlayer: true)
         
-        let b = shoe.removeLast()
+        var b = shoe.removeLast()
         dealer.hands.cards.append(b)
         showCards(dealerHandView, currentView: dealerCard, isPlayer: false)
         
@@ -96,6 +97,10 @@ class ViewController: UIViewController {
     
     @IBAction func standButtonPressed(sender: AnyObject) {
         print("stand pressed")
+        standButton.enabled = false
+        hitButton.enabled = false
+        dealerPick()
+        
     }
    
     
@@ -106,6 +111,19 @@ class ViewController: UIViewController {
         showCards(playerView, currentView: pCard, isPlayer: true)
     }
     
+    func dealerPick() {
+        if dealer.hands.score < 16{
+            var d = shoe.removeLast()
+            
+            dealer.hands.cards.append(d)
+            showCards(dealerHandView, currentView: dealerCard, isPlayer: false)
+            if dealer.hands.score > 21{
+                //dealerBusted()
+                
+            }
+            dealerPick()
+        }
+    }
     
     
     func showCards(parentView : UIView, currentView :UIView, isPlayer: Bool){
@@ -131,11 +149,20 @@ class ViewController: UIViewController {
         }
             
         else{
+            if(dealer.hands.cards.count == 1){
                 for k in dealer.hands.cards{
                     let newCardView : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(k.rank.values.r)\(k.suite.rawValue)")
                     parentView.addSubview(newCardView)
+                    
                 }
-            
+                let newCardView1 : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "back")
+                parentView.addSubview(newCardView1)
+            } else{
+                for k in dealer.hands.cards{
+                    let newCardView2 : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(k.rank.values.r)\(k.suite.rawValue)")
+                    parentView.addSubview(newCardView2)
+                }
+            }
             
         }
     }
