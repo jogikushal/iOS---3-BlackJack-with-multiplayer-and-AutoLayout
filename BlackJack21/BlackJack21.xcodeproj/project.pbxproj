@@ -91,10 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				603397721AC8AB5A00E15493 /* AppDelegate.swift */,
-				603397741AC8AB5A00E15493 /* ViewController.swift */,
-				603397761AC8AB5A00E15493 /* Main.storyboard */,
+				60A67D0D1ACBD41C00E129E0 /* Controller */,
+				60A67D0E1ACBD46D00E129E0 /* View */,
 				603397791AC8AB5A00E15493 /* Images.xcassets */,
-				6033977B1AC8AB5A00E15493 /* LaunchScreen.xib */,
+				60A67D0C1ACBD3E400E129E0 /* Model */,
 				603397701AC8AB5A00E15493 /* Supporting Files */,
 			);
 			path = BlackJack21;
@@ -104,11 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				603397711AC8AB5A00E15493 /* Info.plist */,
-				605C5CE71ACB4B5800F92194 /* Player.swift */,
-				605C5CEB1ACB4BA600F92194 /* Card.swift */,
-				605C5CED1ACB4BEF00F92194 /* Deck.swift */,
-				605C5CE91ACB4B9B00F92194 /* Hand.swift */,
-				605C5CEF1ACB4BFA00F92194 /* Dealer.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -128,6 +123,35 @@
 				603397871AC8AB5A00E15493 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60A67D0C1ACBD3E400E129E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				605C5CE71ACB4B5800F92194 /* Player.swift */,
+				605C5CEB1ACB4BA600F92194 /* Card.swift */,
+				605C5CED1ACB4BEF00F92194 /* Deck.swift */,
+				605C5CE91ACB4B9B00F92194 /* Hand.swift */,
+				605C5CEF1ACB4BFA00F92194 /* Dealer.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		60A67D0D1ACBD41C00E129E0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				603397741AC8AB5A00E15493 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		60A67D0E1ACBD46D00E129E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				603397761AC8AB5A00E15493 /* Main.storyboard */,
+				6033977B1AC8AB5A00E15493 /* LaunchScreen.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

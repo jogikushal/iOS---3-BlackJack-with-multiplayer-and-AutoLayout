@@ -40,10 +40,18 @@ class ViewController: UIViewController {
     
     var players : [Player] = [Player]()
     var playingPlayer = 0
+    var shoe :[Card] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        players.append(Player(pname: "1", pmoney: 100, phands: Hand()))
-
+        standButton.enabled = false
+        hitButton.enabled = false
+        dealButton.enabled = false
+        players.append(Player(pname: "1", pmoney: 100, phands: Hand())) //Player
+        players.append(Player(pname: "2", pmoney: 100, phands: Hand())) // AI
+        
+        var mydeck = Deck().gdeck() + Deck().gdeck() + Deck().gdeck()
+        shoe = Deck().shuffle(mydeck)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -53,6 +61,9 @@ class ViewController: UIViewController {
         players[playingPlayer].hands.bet += 1
         self.betAmount.text = "\(players[playingPlayer].hands.bet)"
         self.playerMoney.text = "\(players[playingPlayer].money)"
+        if(!dealButton.enabled){
+            dealButton.enabled = true
+        }
     }
     @IBAction func fiveButtonPressed(sender: AnyObject) {
         print("five pressed")
@@ -60,6 +71,9 @@ class ViewController: UIViewController {
         players[playingPlayer].hands.bet += 5
         self.betAmount.text = "\(players[playingPlayer].hands.bet)"
         self.playerMoney.text = "\(players[playingPlayer].money)"
+        if(!dealButton.enabled){
+            dealButton.enabled = true
+        }
     }
     
     @IBAction func dealButtonPressed(sender: AnyObject) {
@@ -73,6 +87,8 @@ class ViewController: UIViewController {
     
     @IBAction func hitButtonPressed(sender: AnyObject) {
         print("hit pressed")
+        var a = shoe.removeLast()
+        players[playingPlayer].hands.cards.append(a)
     }
 
     override func didReceiveMemoryWarning() {
