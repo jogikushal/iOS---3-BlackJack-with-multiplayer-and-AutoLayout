@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var betAmount: UILabel!
     
     var players : [Player] = [Player]()
+    var dealer : Dealer = Dealer(dname: "dealer", dhands: Hand())
     var playingPlayer = 0
     var shoe :[Card] = []
     override func viewDidLoad() {
@@ -79,6 +80,18 @@ class ViewController: UIViewController {
     @IBAction func dealButtonPressed(sender: AnyObject) {
         print("deal pressed")
         hitButton.enabled = true
+        for j in 1...2{
+            var a = shoe.removeLast()
+            players[playingPlayer].hands.cards.append(a)
+            showCards(playerView, currentView: pCard, isPlayer: true)
+        }
+        showCards(playerView, currentView: pCard, isPlayer: true)
+        
+        let b = shoe.removeLast()
+        dealer.hands.cards.append(b)
+        showCards(dealerHandView, currentView: dealerCard, isPlayer: false)
+        
+        dealButton.enabled = false
     }
     
     @IBAction func standButtonPressed(sender: AnyObject) {
@@ -90,12 +103,12 @@ class ViewController: UIViewController {
         print("hit pressed")
         var a = shoe.removeLast()
         players[playingPlayer].hands.cards.append(a)
-        showCards(playerView, currentView: pCard)
+        showCards(playerView, currentView: pCard, isPlayer: true)
     }
     
     
     
-    func showCards(parentView : UIView, currentView :UIView){
+    func showCards(parentView : UIView, currentView :UIView, isPlayer: Bool){
         var xoffSet : CGFloat = 0
         var yoffSet : CGFloat = 0
         var currentStart = currentView.frame.size
@@ -109,12 +122,23 @@ class ViewController: UIViewController {
         
         let helper = ViewControllerHelper()
         //if(addAllCards){
-        for i in players[playingPlayer].hands.cards{
+        if(isPlayer){
+            for i in players[playingPlayer].hands.cards{
         
                 let newCardView : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(i.rank.values.r)\(i.suite.rawValue)")
                 parentView.addSubview(newCardView)
             }
         }
+            
+        else{
+                for k in dealer.hands.cards{
+                    let newCardView : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(k.rank.values.r)\(k.suite.rawValue)")
+                    parentView.addSubview(newCardView)
+                }
+            
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
