@@ -38,26 +38,41 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var betAmount: UILabel!
     
-    
+    var players : [Player] = [Player]()
+    var playingPlayer = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        players.append(Player(pname: "1", pmoney: 100, phands: Hand()))
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func oneButtonPressed(sender: AnyObject) {
+        print("one pressed")
+        players[playingPlayer].money -= 1
+        players[playingPlayer].hands.bet += 1
+        self.betAmount.text = "\(players[playingPlayer].hands.bet)"
+        self.playerMoney.text = "\(players[playingPlayer].money)"
     }
-
     @IBAction func fiveButtonPressed(sender: AnyObject) {
+        print("five pressed")
+        players[playingPlayer].money -= 5
+        players[playingPlayer].hands.bet += 5
+        self.betAmount.text = "\(players[playingPlayer].hands.bet)"
+        self.playerMoney.text = "\(players[playingPlayer].money)"
     }
     
     @IBAction func dealButtonPressed(sender: AnyObject) {
+        print("deal pressed")
     }
     
     @IBAction func standButtonPressed(sender: AnyObject) {
+        print("stand pressed")
     }
    
     
     @IBAction func hitButtonPressed(sender: AnyObject) {
+        print("hit pressed")
     }
 
     override func didReceiveMemoryWarning() {
