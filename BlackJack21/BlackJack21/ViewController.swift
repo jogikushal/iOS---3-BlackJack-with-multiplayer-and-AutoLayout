@@ -38,12 +38,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var betAmount: UILabel!
     
+    @IBOutlet weak var nextButton: UIButton!
+    
     var players : [Player] = [Player]()
     var dealer : Dealer = Dealer(dname: "dealer", dhands: Hand())
     var playingPlayer = 0
     var shoe :[Card] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextButton.enabled = false
         standButton.enabled = false
         hitButton.enabled = false
         dealButton.enabled = false
@@ -55,6 +58,30 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
+    
+    @IBAction func nextPressed(sender: AnyObject) {
+        
+            /*   let newCardView3 : UIView = helper.createCardSubView(x + (CGFloat(0)*xoffSet) , y:y,width:width1,height:height1,imageName : "back")
+            parentView.addSubview(newCardView3)*/
+            clear()
+        
+    }
+    
+    func clear(){
+        players[playingPlayer].hands.bet = 0
+        players[playingPlayer].hands.cards = []
+        dealer.hands.cards = []
+        
+        for subUIView in playerView.subviews as [UIView] {
+            subUIView.removeFromSuperview()
+        }
+        for subUIView in dealerHandView.subviews as [UIView] {
+            subUIView.removeFromSuperview()
+        }
+    }
+    
 
     @IBAction func oneButtonPressed(sender: AnyObject) {
         print("one pressed")
@@ -97,10 +124,16 @@ class ViewController: UIViewController {
     
     @IBAction func standButtonPressed(sender: AnyObject) {
         print("stand pressed")
+        nextButton.enabled = true
         standButton.enabled = false
         hitButton.enabled = false
         dealerPick()
+        win()
         
+        players[playingPlayer].hands.bet = 0
+        players[playingPlayer].hands.cards = []
+      //  showCards(playerView, currentView: pCard, isPlayer: true)
+    //    dealer.hands.cards = []
     }
    
     
@@ -109,6 +142,10 @@ class ViewController: UIViewController {
         var a = shoe.removeLast()
         players[playingPlayer].hands.cards.append(a)
         showCards(playerView, currentView: pCard, isPlayer: true)
+        
+        if players[playingPlayer].hands.score > 21 {
+            win()
+        }
     }
     
     func dealerPick() {
@@ -141,11 +178,13 @@ class ViewController: UIViewController {
         let helper = ViewControllerHelper()
         //if(addAllCards){
         if(isPlayer){
+            
             for i in players[playingPlayer].hands.cards{
         
                 let newCardView : UIView = helper.createCardSubView(x + (CGFloat(j++)*xoffSet) , y:y,width:width1,height:height1,imageName : "\(i.rank.values.r)\(i.suite.rawValue)")
                 parentView.addSubview(newCardView)
             }
+            
         }
             
         else{
@@ -164,6 +203,37 @@ class ViewController: UIViewController {
                 }
             }
             
+        }
+    }
+    
+    
+    
+    
+    func win() {
+        if players[playingPlayer].hands.score > dealer.hands.score && (players[playingPlayer].hands.score < 21 || players[playingPlayer].hands.score == 21){
+            var alert = UIAlertController(title: "Win", message: "Player \(players[playingPlayer].name) Wins", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else if dealer.hands.score > players[playingPlayer].hands.score && (dealer.hands.score < 21 || dealer.hands.score == 21){
+            var alert = UIAlertController(title: "Unlucky!!", message: "Player \(players[playingPlayer].name) lose", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }  else if dealer.hands.score == players[playingPlayer].hands.score {
+            var alert = UIAlertController(title: "Push", message: "Dealer", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else if dealer.hands.score > 21 {
+            var alert = UIAlertController(title: "Dealer Busted", message: "Player \(players[playingPlayer].name) Wins", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            //  let pcards = players[playingPlayer].hands.cards
+            players[playingPlayer].money += players[playingPlayer].hands.bet
+        } else if players[playingPlayer].hands.score > 21{
+            var alert = UIAlertController(title: "Busted", message: "Player \(players[playingPlayer].name) Busted", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            //  let pcards = players[playingPlayer].hands.cards
+            players[playingPlayer].money -= players[playingPlayer].hands.bet
         }
     }
 

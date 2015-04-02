@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -359,9 +360,18 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEALER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R5-du-gnt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjM-55-tcS">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="NEXT ROUND&gt;">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N6P-3M-XAy"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEALER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-3k-JdD">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.68418482729999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -370,18 +380,20 @@
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="dL9-DB-q9l" secondAttribute="centerX" id="144-fc-Cik"/>
                                     <constraint firstItem="9ua-95-fsB" firstAttribute="top" secondItem="dL9-DB-q9l" secondAttribute="bottom" constant="3" id="5ic-rm-M6y"/>
-                                    <constraint firstAttribute="centerX" secondItem="8R5-du-gnt" secondAttribute="centerX" id="FmA-HM-Sf7"/>
                                     <constraint firstAttribute="centerX" secondItem="9ua-95-fsB" secondAttribute="centerX" id="P4y-da-Z01"/>
                                     <constraint firstItem="kjt-rQ-Sxn" firstAttribute="leading" secondItem="O41-zh-h6Y" secondAttribute="leading" id="VSJ-G4-tuO"/>
                                     <constraint firstItem="kjt-rQ-Sxn" firstAttribute="top" secondItem="9ua-95-fsB" secondAttribute="bottom" constant="1" id="WBC-Xi-HGr"/>
                                     <constraint firstAttribute="centerY" secondItem="9ua-95-fsB" secondAttribute="centerY" id="XTc-jj-T1U"/>
                                     <constraint firstItem="9ua-95-fsB" firstAttribute="top" secondItem="TVt-Sa-WFa" secondAttribute="bottom" constant="-95" id="YE9-hf-Wpy"/>
                                     <constraint firstAttribute="trailing" secondItem="kjt-rQ-Sxn" secondAttribute="trailing" id="ita-IN-mwy"/>
+                                    <constraint firstAttribute="centerX" secondItem="Tuq-3k-JdD" secondAttribute="centerX" id="jao-pB-YEL"/>
+                                    <constraint firstItem="IN9-bg-ynh" firstAttribute="top" secondItem="Tuq-3k-JdD" secondAttribute="bottom" constant="13" id="l69-zN-eHB"/>
                                     <constraint firstAttribute="centerX" secondItem="TVt-Sa-WFa" secondAttribute="centerX" id="o2j-ON-Qhn"/>
-                                    <constraint firstItem="IN9-bg-ynh" firstAttribute="top" secondItem="8R5-du-gnt" secondAttribute="bottom" constant="8" id="pJB-kx-MdB"/>
                                     <constraint firstAttribute="bottom" secondItem="kjt-rQ-Sxn" secondAttribute="bottom" id="pQX-sJ-2LK"/>
+                                    <constraint firstItem="IN9-bg-ynh" firstAttribute="top" secondItem="YjM-55-tcS" secondAttribute="bottom" constant="8" id="qrh-Hg-vPh"/>
                                     <constraint firstItem="9ua-95-fsB" firstAttribute="top" secondItem="IN9-bg-ynh" secondAttribute="bottom" constant="27" id="seY-bk-aGS"/>
                                     <constraint firstAttribute="centerX" secondItem="IN9-bg-ynh" secondAttribute="centerX" id="vdv-z1-REh"/>
+                                    <constraint firstItem="YjM-55-tcS" firstAttribute="trailing" secondItem="O41-zh-h6Y" secondAttribute="trailingMargin" id="wzm-5B-1cQ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -390,19 +402,22 @@
                                         <exclude reference="dL9-DB-q9l"/>
                                         <exclude reference="TVt-Sa-WFa"/>
                                         <exclude reference="kjt-rQ-Sxn"/>
-                                        <exclude reference="8R5-du-gnt"/>
+                                        <exclude reference="YjM-55-tcS"/>
+                                        <exclude reference="Tuq-3k-JdD"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="FmA-HM-Sf7"/>
-                                        <exclude reference="o2j-ON-Qhn"/>
-                                        <exclude reference="144-fc-Cik"/>
+                                        <exclude reference="l69-zN-eHB"/>
+                                        <exclude reference="qrh-Hg-vPh"/>
+                                        <exclude reference="vdv-z1-REh"/>
+                                        <exclude reference="jao-pB-YEL"/>
                                         <exclude reference="5ic-rm-M6y"/>
                                         <exclude reference="P4y-da-Z01"/>
                                         <exclude reference="XTc-jj-T1U"/>
                                         <exclude reference="YE9-hf-Wpy"/>
                                         <exclude reference="seY-bk-aGS"/>
-                                        <exclude reference="pJB-kx-MdB"/>
-                                        <exclude reference="vdv-z1-REh"/>
+                                        <exclude reference="144-fc-Cik"/>
+                                        <exclude reference="wzm-5B-1cQ"/>
+                                        <exclude reference="o2j-ON-Qhn"/>
                                         <exclude reference="VSJ-G4-tuO"/>
                                         <exclude reference="WBC-Xi-HGr"/>
                                         <exclude reference="ita-IN-mwy"/>
@@ -416,19 +431,22 @@
                                         <include reference="dL9-DB-q9l"/>
                                         <include reference="TVt-Sa-WFa"/>
                                         <include reference="kjt-rQ-Sxn"/>
-                                        <include reference="8R5-du-gnt"/>
+                                        <include reference="YjM-55-tcS"/>
+                                        <include reference="Tuq-3k-JdD"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="FmA-HM-Sf7"/>
-                                        <include reference="o2j-ON-Qhn"/>
-                                        <include reference="144-fc-Cik"/>
+                                        <include reference="l69-zN-eHB"/>
+                                        <include reference="qrh-Hg-vPh"/>
+                                        <include reference="vdv-z1-REh"/>
+                                        <include reference="jao-pB-YEL"/>
                                         <include reference="5ic-rm-M6y"/>
                                         <include reference="P4y-da-Z01"/>
                                         <include reference="XTc-jj-T1U"/>
                                         <include reference="YE9-hf-Wpy"/>
                                         <include reference="seY-bk-aGS"/>
-                                        <include reference="pJB-kx-MdB"/>
-                                        <include reference="vdv-z1-REh"/>
+                                        <include reference="144-fc-Cik"/>
+                                        <include reference="wzm-5B-1cQ"/>
+                                        <include reference="o2j-ON-Qhn"/>
                                         <include reference="VSJ-G4-tuO"/>
                                         <include reference="WBC-Xi-HGr"/>
                                         <include reference="ita-IN-mwy"/>
@@ -475,6 +493,7 @@
                         <outlet property="dealerHandView" destination="IN9-bg-ynh" id="Jlc-Lm-2Bl"/>
                         <outlet property="fiveButton" destination="01g-hU-Xbw" id="zL6-Lz-Q2F"/>
                         <outlet property="hitButton" destination="aA7-kP-HOe" id="Qzg-vB-nBo"/>
+                        <outlet property="nextButton" destination="YjM-55-tcS" id="JPo-ha-qce"/>
                         <outlet property="oneButton" destination="Puq-1Y-5Qs" id="Wde-58-2p6"/>
                         <outlet property="pCard" destination="qCP-iG-Olq" id="Jqd-bq-cKr"/>
                         <outlet property="playerMoney" destination="JHb-Df-goF" id="Et5-9P-FKW"/>
@@ -492,4 +511,5 @@
         <image name="5" width="48" height="48"/>
         <image name="back" width="120" height="170"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.68418482729999996" alpha="1" colorSpace="calibratedRGB"/>
 </document>
