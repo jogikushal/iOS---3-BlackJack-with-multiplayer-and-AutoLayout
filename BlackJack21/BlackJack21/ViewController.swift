@@ -66,6 +66,7 @@ class ViewController: UIViewController {
             /*   let newCardView3 : UIView = helper.createCardSubView(x + (CGFloat(0)*xoffSet) , y:y,width:width1,height:height1,imageName : "back")
             parentView.addSubview(newCardView3)*/
             clear()
+            nextButton.enabled = false
         
     }
     
@@ -144,6 +145,10 @@ class ViewController: UIViewController {
         showCards(playerView, currentView: pCard, isPlayer: true)
         
         if players[playingPlayer].hands.score > 21 {
+            var d = shoe.removeLast()
+            
+            dealer.hands.cards.append(d)
+            showCards(dealerHandView, currentView: dealerCard, isPlayer: false)
             win()
         }
     }
@@ -219,7 +224,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }  else if dealer.hands.score == players[playingPlayer].hands.score {
-            var alert = UIAlertController(title: "Push", message: "Dealer", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Push", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Next", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else if dealer.hands.score > 21 {
